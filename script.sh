@@ -1,6 +1,6 @@
 sudo apt-get update && sudo apt-get upgrade
 
-sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libncurses5-dev libwxgtk3.0-dev git repo adb fastboot
+sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libncurses5-dev libwxgtk3.0-dev git repo adb fastboot
 
 sudo apt-get update && sudo apt-get upgrade 
 
@@ -19,6 +19,8 @@ git config --global user.name "rushi"
 export USE_CCACHE=1
 
 export CCACHE_EXEC=/usr/bin/ccache
+
+sudo apt install -y ccache
 
 ccache -M 50G
 
