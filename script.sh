@@ -16,14 +16,6 @@ git config --global user.email "rushi@titan.com"
 
 git config --global user.name "rushi"
 
-git clone https://github.com/RenanQueiroz/android_device_motorola_titan -b lineage-17.1 device/motorola/titan
-
-git clone https://github.com/RenanQueiroz/android_kernel_motorola_msm8226 -b lineage-17.0 kernel/motorola/msm8226
-
-git clone https://github.com/RenanQueiroz/proprietary_vendor_motorola -b lineage-16.0 vendor/motorola
-
-git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
-
 export USE_CCACHE=1
 
 export CCACHE_EXEC=/usr/bin/ccache
@@ -37,6 +29,15 @@ cd ~/android/lineage
 repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
 
 repo sync
+
+git clone https://github.com/RenanQueiroz/android_device_motorola_titan -b lineage-17.1 device/motorola/titan
+
+git clone https://github.com/RenanQueiroz/android_kernel_motorola_msm8226 -b lineage-17.0 kernel/motorola/msm8226
+
+git clone https://github.com/RenanQueiroz/proprietary_vendor_motorola -b lineage-16.0 vendor/motorola
+
+git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
+
 
 cd ~/android/lineage
 
