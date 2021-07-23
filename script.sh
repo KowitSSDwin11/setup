@@ -38,9 +38,6 @@ git clone https://github.com/RenanQueiroz/proprietary_vendor_motorola -b lineage
 
 git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
 
-
-cd ~/android/lineage
-
 source build/envsetup.sh
 
 breakfast titan
