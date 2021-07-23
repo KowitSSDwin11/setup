@@ -37,3 +37,13 @@ cd ~/android/lineage
 repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
 
 repo sync
+
+cd ~/android/lineage
+
+source build/envsetup.sh
+
+breakfast titan
+
+croot
+
+brunch titan
