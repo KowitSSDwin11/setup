@@ -54,26 +54,6 @@ sleep 5
 
 git config --global user.name "rushi"
 
-echo "Turning on caching to speed up build"
-sleep 5
-
-export USE_CCACHE=1
-
-export CCACHE_EXEC=/usr/bin/ccache
-
-source ~/.bashrc
-
-source ~/.profile
-
-echo "next"
-sleep 5
-
-ccache -M 50G
-
-echo "next"
-sleep 5
-
-ccache -o compression=true
 
 echo "Confirming"
 sleep 5
