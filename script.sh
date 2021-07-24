@@ -58,7 +58,7 @@ cd ~/android/lineage
 
 repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
 
-repo sync -j 16
+repo sync -j16
 
 cd ~/android/lineage
 
