@@ -95,6 +95,11 @@ sleep 5
 
 cd ~/android/lineage
 
+echo "Cloning qcom"
+sleep 5
+
+git clone https://github.com/LineageOS/android_system_qcom/ -b lineage-17.1 system/qcom
+
 echo "Cloning device tree"
 sleep 5
 
