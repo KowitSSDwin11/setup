@@ -95,16 +95,6 @@ sleep 5
 
 cd ~/android/lineage
 
-echo "Preparing the device-specific code"
-sleep 5
-
-source build/envsetup.sh
-
-echo "breakfast"
-sleep 5
-
-breakfast titan
-
 echo "Cloning device tree"
 sleep 5
 
@@ -124,6 +114,16 @@ echo "Cloning device common"
 sleep 5
 
 git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
+
+echo "Preparing the device-specific code"
+sleep 5
+
+source build/envsetup.sh
+
+echo "breakfast"
+sleep 5
+
+breakfast titan
 
 echo "Croot"
 sleep 5
