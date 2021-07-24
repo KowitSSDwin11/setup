@@ -47,7 +47,7 @@ source ~/.profile
 echo "Set git email"
 sleep 5
 
-git config --global user.email "rushi@titan.com"
+git config --global user.email "rushi@chef.com"
 
 echo "Set git name"
 sleep 5
@@ -95,30 +95,25 @@ sleep 5
 
 cd ~/android/lineage
 
-echo "Cloning qcom"
-sleep 5
-
-git clone https://github.com/LineageOS/android_system_qcom/ -b lineage-17.1 system/qcom
-
 echo "Cloning device tree"
 sleep 5
 
-git clone https://github.com/RenanQueiroz/android_device_motorola_titan -b lineage-17.1 device/motorola/titan
+git clone https://github.com/LineageOS/android_device_motorola_chef -b lineage-18.1 device/motorola/chef
 
 echo "Cloning device kernel"
 sleep 5
 
-git clone https://github.com/RenanQueiroz/android_kernel_motorola_msm8226 -b lineage-17.0 kernel/motorola/msm8226
+git clone https://github.com/LineageOS/android_kernel_motorola_msm8998 -b lineage-18.1 kernel/motorola/msm8998
 
 echo "Cloning device vendor"
 sleep 5
 
-git clone https://github.com/RenanQueiroz/proprietary_vendor_motorola -b lineage-16.0 vendor/motorola
+git clone https://github.com/TheMuppets/proprietary_vendor_motorola -b lineage-18.1 vendor/motorola
 
 echo "Cloning device common"
 sleep 5
 
-git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
+git clone https://github.com/LineageOS/android_device_motorola_sdm660-common -b lineage-18.1 device/motorola/sdm660-common
 
 echo "Preparing the device-specific code"
 sleep 5
@@ -128,7 +123,7 @@ source build/envsetup.sh
 echo "breakfast"
 sleep 5
 
-breakfast titan
+breakfast chef
 
 echo "Croot"
 sleep 5
@@ -136,4 +131,4 @@ sleep 5
 croot
 echo "Building"
 sleep 5
-brunch titan
+brunch chef
