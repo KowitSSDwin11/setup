@@ -18,8 +18,22 @@ echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
 source ~/.profile
+echo "export USE_CCACHE=1" >> ~/.bashrc
+echo "export CCACHE_EXEC=$(command -v ccache)" >> ~/.bashrc
 echo "ccache -M 50G" >> ~/.bashrc
+echo "export USE_NINJA=false" >> ~/.bashrc
 source ~/.bashrc
+source ~/.profile
+echo "ccache"
+export USE_CCACHE=1
+echo "ccache"
+export CCACHE_EXEC=$(command -v ccache)
+echo "ccache"
+ccache -M 50G
+export USE_NINJA=false
+echo "Updating environment"
+source ~/.bashrc
+echo "Updating environment"
 source ~/.profile
 sudo apt install git
 echo "CD"
@@ -72,18 +86,6 @@ echo "Preparing the device-specific code"
 source build/envsetup.sh
 echo "Lunch"
 lunch aosp_titan-userdebug
-echo "ccache"
-export USE_CCACHE=1
-echo "ccache"
-export CCACHE_EXEC=/usr/bin/ccache
-echo "ccache"
-ccache -M 50G
-echo "ccache"
-ccache -o compression=true
-echo "Updating environment"
-source ~/.bashrc
-echo "Updating environment"
-source ~/.profile
 echo "Croot"
 croot
 echo "Building"
