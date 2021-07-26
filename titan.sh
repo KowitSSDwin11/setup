@@ -22,6 +22,7 @@ source ~/.profile
 echo "export USE_CCACHE=1" >> ~/.bashrc
 echo "export CCACHE_EXEC=$(command -v ccache)" >> ~/.bashrc
 echo "ccache -M 50G" >> ~/.bashrc
+echo "export USE_NINJA=false" >> ~/.bashrc
 source ~/.bashrc
 source ~/.profile
 echo "ccache"
@@ -30,6 +31,7 @@ echo "ccache"
 export CCACHE_EXEC=$(command -v ccache)
 echo "ccache"
 ccache -M 50G
+export USE_NINJA=false
 echo "Updating environment"
 source ~/.bashrc
 echo "Updating environment"
