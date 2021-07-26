@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-echo "Step 1"
+echo "CD"
 cd
-echo "Step 2"
-sudo -s
-echo "Step 3"
+echo "Updating..."
 sudo apt-get update && sudo apt-get upgrade -y
-echo"Step 4"
+echo"Downloading platformtools"
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-echo "Step 5"
+echo "Unziping platformtools"
 unzip platform-tools-latest-linux.zip -d ~
-echo "Step 6"
+echo "Updating environment"
 echo "# add Android SDK platform tools to path" >> ~/.profile
 echo "if [ -d "$HOME/platform-tools" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/platform-tools:$PATH"" >> ~/.profile
@@ -24,69 +22,69 @@ echo "ccache -M 50G" >> ~/.bashrc
 source ~/.bashrc
 source ~/.profile
 sudo apt install git
-echo "Step 7"
+echo "CD"
 cd ~/
-echo "Step 8"
+echo "Downloading configuration script"
 git clone https://github.com/akhilnarang/scripts
-echi "Step 9"
+echi "CD"
 cd scripts
-echo "Step 10"
+echo "Running configuration script"
 ./setup/android_build_env.sh
-echo "Step 11"
+echo "CD"
 cd
-echo "Step 12"
+echo "Creating bin"
 mkdir -p ~/bin
-echo "Step 13"
+echo "Creating android/pe"
 mkdir -p ~/android/pe
-echo "Step 14"
+echo "Downloading repo"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-echo "Step 15"
+echo "Installing repo"
 chmod a+x ~/bin/repo
-echo "Step 16"
+echo "Updating environment"
 source ~/.profile
-echo "Step 17"
+echo "Set git email"
 git config --global user.email "you@example.com"
-echo "Step 18"
+echo "Set git name"
 git config --global user.name "Your Name"
-echo "Step 19"
+echo "Updating..."
 sudo apt-get update && sudo apt-get upgrade -y
-echo "Step 20"
+echo "CD"
 cd ~/android/pe
-echo "Step 21"
+echo "Initializing the PE source repository"
 repo init -u https://github.com/PixelExperience/manifest -b ten-plus
-echo "Step 22"
+echo "CD"
 cd ~/android/pe
-echo "Step 23"
+echo "Downloading the source code"
 repo sync -j$(nproc --all) -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-echo "Step 24"
+echo "CD"
 cd ~/android/pe
-echo "Step 25"
+echo "Cloning device tree"
 git clone https://github.com/thedeadfish59/android_device_motorola_titan -b ten device/motorola/titan
-echo "Step 26"
+echo "Cloning device kernel"
 git clone https://github.com/thedeadfish59/android_kernel_motorola_msm8226 -b ten kernel/motorola/msm8226
-echo "Step 27"
+echo "Cloning device vendor"
 git clone https://github.com/thedeadfish59/proprietary_vendor_motorola -b ten vendor/motorola
-echo "Step 28"
+echo "Cloning device common"
 git clone https://github.com/thedeadfish59/android_device_motorola_msm8226-common -b ten device/motorola/msm8226-common
-echo "Step 29"
+echo "Cloning qcom"
 git clone https://github.com/thedeadfish59/android_system_qcom -b ten system/qcom
-echo "Step 30"
+echo "Preparing the device-specific code"
 source build/envsetup.sh
-echo "Step 31"
+echo "Lunch"
 lunch aosp_titan-userdebug
-echo "Step 32"
+echo "ccache"
 export USE_CCACHE=1
-echo "Step 33"
+echo "ccache"
 export CCACHE_EXEC=/usr/bin/ccache
-echo "Step 34"
+echo "ccache"
 ccache -M 50G
-echo "Step 35"
+echo "ccache"
 ccache -o compression=true
-echo "Step 36"
+echo "Updating environment"
 source ~/.bashrc
-echo "Step 37"
+echo "Updating environment"
 source ~/.profile
-echo "Step 38"
+echo "Croot"
 croot
-echo "Step 39"
+echo "Building"
 mka bacon -j$(nproc --all)
