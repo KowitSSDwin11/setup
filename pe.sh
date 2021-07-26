@@ -11,6 +11,18 @@ wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 echo "Step 5"
 unzip platform-tools-latest-linux.zip -d ~
 echo "Step 6"
+echo "# add Android SDK platform tools to path" >> ~/.profile
+echo "if [ -d "$HOME/platform-tools" ] ; then" >> ~/.profile
+echo "    PATH="$HOME/platform-tools:$PATH"" >> ~/.profile
+echo "fi" >> ~/.profile
+echo "# set PATH so it includes user's private bin if it exists" >> ~/.profile
+echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
+echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
+echo "fi" >> ~/.profile
+source ~/.profile
+echo "ccache -M 50G" >> ~/.bashrc
+source ~/.bashrc
+source ~/.profile
 sudo apt install git
 echo "Step 7"
 cd ~/
@@ -78,5 +90,3 @@ echo "Step 38"
 croot
 echo "Step 39"
 mka bacon -j$(nproc --all)
-echo "Step 40"
-cd $OUT
