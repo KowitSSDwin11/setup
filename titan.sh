@@ -4,6 +4,7 @@ echo "CD"
 cd
 echo "Updating..."
 sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev git adb fastboot
 echo"Downloading platformtools"
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 echo "Unziping platformtools"
@@ -34,8 +35,8 @@ echo "CD"
 cd
 echo "Creating bin"
 mkdir -p ~/bin
-echo "Creating android/pe"
-mkdir -p ~/android/pe
+echo "Creating android/lineage"
+mkdir -p ~/android/lineage
 echo "Downloading repo"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 echo "Installing repo"
@@ -49,29 +50,29 @@ git config --global user.name "Your Name"
 echo "Updating..."
 sudo apt-get update && sudo apt-get upgrade -y
 echo "CD"
-cd ~/android/pe
+cd ~/android/lineage
 echo "Initializing the PE source repository"
-repo init -u https://github.com/PixelExperience/manifest -b ten-plus
+repo init -y -u https://github.com/LineageOS/android.git -b lineage-17.1
 echo "CD"
-cd ~/android/pe
+cd ~/android/lineage
 echo "Downloading the source code"
 repo sync -j$(nproc --all) -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 echo "CD"
-cd ~/android/pe
+cd ~/android/lineage
 echo "Cloning device tree"
-git clone https://github.com/thedeadfish59/android_device_motorola_titan -b ten device/motorola/titan
+git clone https://github.com/RenanQueiroz/android_device_motorola_titan -b lineage-17.1 device/motorola/titan
 echo "Cloning device kernel"
-git clone https://github.com/thedeadfish59/android_kernel_motorola_msm8226 -b ten kernel/motorola/msm8226
+git clone https://github.com/RenanQueiroz/android_kernel_motorola_msm8226 -b lineage-17.0 kernel/motorola/msm8226
 echo "Cloning device vendor"
-git clone https://github.com/thedeadfish59/proprietary_vendor_motorola -b ten vendor/motorola
+git clone https://github.com/RenanQueiroz/proprietary_vendor_motorola -b lineage-16.0 vendor/motorola
 echo "Cloning device common"
-git clone https://github.com/thedeadfish59/android_device_motorola_msm8226-common -b ten device/motorola/msm8226-common
+git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
 echo "Cloning qcom"
-git clone https://github.com/thedeadfish59/android_system_qcom -b ten system/qcom
+git clone https://github.com/LineageOS/android_system_qcom/ -b lineage-17.1 system/qcom
 echo "Preparing the device-specific code"
 source build/envsetup.sh
-echo "Lunch"
-lunch aosp_titan-userdebug
+echo "breakfast"
+breakfast titan
 echo "ccache"
 export USE_CCACHE=1
 echo "ccache"
@@ -87,4 +88,4 @@ source ~/.profile
 echo "Croot"
 croot
 echo "Building"
-mka bacon -j$(nproc --all)
+brunch
