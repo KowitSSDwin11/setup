@@ -19,8 +19,20 @@ echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
 source ~/.profile
+echo "export USE_CCACHE=1" >> ~/.bashrc
+echo "export CCACHE_EXEC=$(command -v ccache)" >> ~/.bashrc
 echo "ccache -M 50G" >> ~/.bashrc
 source ~/.bashrc
+source ~/.profile
+echo "ccache"
+export USE_CCACHE=1
+echo "ccache"
+export CCACHE_EXEC=$(command -v ccache)
+echo "ccache"
+ccache -M 50G
+echo "Updating environment"
+source ~/.bashrc
+echo "Updating environment"
 source ~/.profile
 sudo apt install git
 echo "CD"
@@ -68,24 +80,12 @@ git clone https://github.com/RenanQueiroz/proprietary_vendor_motorola -b lineage
 echo "Cloning device common"
 git clone https://github.com/MotoDevelopment/android_device_motorola_msm8226-common -b lineage-17.1 device/motorola/msm8226-common
 echo "Cloning qcom"
-git clone https://github.com/LineageOS/android_system_qcom/ -b lineage-17.1 system/qcom
+git clone https://github.com/LineageOS/android_system_qcom -b lineage-17.1 system/qcom
 echo "Preparing the device-specific code"
 source build/envsetup.sh
 echo "breakfast"
 breakfast titan
-echo "ccache"
-export USE_CCACHE=1
-echo "ccache"
-export CCACHE_EXEC=/usr/bin/ccache
-echo "ccache"
-ccache -M 50G
-echo "ccache"
-ccache -o compression=true
-echo "Updating environment"
-source ~/.bashrc
-echo "Updating environment"
-source ~/.profile
 echo "Croot"
 croot
 echo "Building"
-brunch
+brunch titan -j16
