@@ -52,7 +52,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 echo "CD"
 cd ~/android/lineage
 echo "Initializing the PE source repository"
-repo init -y -u https://github.com/LineageOS/android.git -b lineage-17.1
+repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
 echo "CD"
 cd ~/android/lineage
 echo "Downloading the source code"
