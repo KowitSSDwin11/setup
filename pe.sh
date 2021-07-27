@@ -8,6 +8,17 @@ echo"Downloading platformtools"
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 echo "Unziping platformtools"
 unzip platform-tools-latest-linux.zip -d ~
+sudo apt install git
+echo "CD"
+cd ~/
+echo "Downloading configuration script"
+git clone https://github.com/akhilnarang/scripts
+echo "CD"
+cd scripts
+echo "Running configuration script"
+./setup/android_build_env.sh
+echo "CD"
+cd
 echo "Updating environment"
 echo "# add Android SDK platform tools to path" >> ~/.profile
 echo "if [ -d "$HOME/platform-tools" ] ; then" >> ~/.profile
@@ -35,17 +46,6 @@ echo "Updating environment"
 source ~/.bashrc
 echo "Updating environment"
 source ~/.profile
-sudo apt install git
-echo "CD"
-cd ~/
-echo "Downloading configuration script"
-git clone https://github.com/akhilnarang/scripts
-echo "CD"
-cd scripts
-echo "Running configuration script"
-./setup/android_build_env.sh
-echo "CD"
-cd
 echo "Creating bin"
 mkdir -p ~/bin
 echo "Creating android/pe"
