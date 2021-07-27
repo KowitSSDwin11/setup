@@ -40,7 +40,7 @@ echo "CD"
 cd ~/
 echo "Downloading configuration script"
 git clone https://github.com/akhilnarang/scripts
-echi "CD"
+echo "CD"
 cd scripts
 echo "Running configuration script"
 ./setup/android_build_env.sh
