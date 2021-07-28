@@ -24,4 +24,4 @@ echo "Lunch"
 lunch aosp_titan-userdebug
 echo "Croot"
 croot
-echo "mka bacon -j30"
+mka bacon -j30
