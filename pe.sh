@@ -25,4 +25,3 @@ lunch aosp_titan-userdebug
 echo "Croot"
 croot
 echo "mka bacon -j30"
-
