@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
-echo "CD"
-cd
 echo "Updating..."
 sudo apt-get update && sudo apt-get upgrade -y
 echo"Downloading platformtools"
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 echo "Unziping platformtools"
-unzip platform-tools-latest-linux.zip -d ~
+unzip platform-tools-latest-linux.zip -d platform-tools
 sudo apt install git
-echo "CD"
-cd ~/
 echo "Downloading configuration script"
 git clone https://github.com/akhilnarang/scripts
 echo "CD"
@@ -18,7 +14,7 @@ cd scripts
 echo "Running configuration script"
 ./setup/android_build_env.sh
 echo "CD"
-cd
+cd /workspace/titan
 echo "Updating environment"
 echo "# add Android SDK platform tools to path" >> ~/.profile
 echo "if [ -d "$HOME/platform-tools" ] ; then" >> ~/.profile
@@ -29,6 +25,7 @@ echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
 source ~/.profile
+echo "export CCACHE_DIR=/workspace/titan/.ccache" >> ~/.bashrc
 echo "export USE_CCACHE=1" >> ~/.bashrc
 echo "export CCACHE_EXEC=$(command -v ccache)" >> ~/.bashrc
 echo "ccache -M 50G" >> ~/.bashrc
@@ -36,6 +33,7 @@ echo "export USE_NINJA=false" >> ~/.bashrc
 source ~/.bashrc
 source ~/.profile
 echo "ccache"
+export CCACHE_DIR=/workspace/titan/.ccache
 export USE_CCACHE=1
 echo "ccache"
 export CCACHE_EXEC=$(command -v ccache)
@@ -47,9 +45,9 @@ source ~/.bashrc
 echo "Updating environment"
 source ~/.profile
 echo "Creating bin"
-mkdir -p ~/bin
+mkdir -p bin
 echo "Creating android/pe"
-mkdir -p ~/android/pe
+mkdir -p android/pe
 echo "Downloading repo"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 echo "Installing repo"
@@ -63,21 +61,17 @@ git config --global user.name "Your Name"
 echo "Updating..."
 sudo apt-get update && sudo apt-get upgrade -y
 echo "CD"
-cd ~/android/pe
+cd android/pe
 echo "Initializing the PE source repository"
-repo init -u https://github.com/PixelExperience/manifest -b ten-plus
-echo "CD"
-cd ~/android/pe
+repo init -q --no-repo-verify --depth=1 -u https://github.com/PixelExperience/manifest -b ten-plus
 echo "Downloading the source code"
-repo sync -j$(nproc --all) -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-echo "CD"
-cd ~/android/pe
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j16
 echo "Cloning device tree"
-git clone https://github.com/thedeadfish59/android_device_motorola_titan -b ten device/motorola/titan
+git clone https://github.com/thedeadfish59/android_device_motorola_titan --depth 1 -b ten device/motorola/titan
 echo "Cloning device kernel"
-git clone https://github.com/thedeadfish59/android_kernel_motorola_msm8226 -b ten kernel/motorola/msm8226
+git clone https://github.com/thedeadfish59/android_kernel_motorola_msm8226 --depth 1 -b ten kernel/motorola/msm8226
 echo "Cloning device vendor"
-git clone https://github.com/thedeadfish59/proprietary_vendor_motorola -b ten vendor/motorola
+git clone https://github.com/thedeadfish59/proprietary_vendor_motorola --depth 1 -b ten vendor/motorola
 echo "Cloning device common"
 git clone https://github.com/thedeadfish59/android_device_motorola_msm8226-common -b ten device/motorola/msm8226-common
 echo "Cloning qcom"
@@ -89,4 +83,4 @@ lunch aosp_titan-userdebug
 echo "Croot"
 croot
 echo "Building"
-mka bacon -j$(nproc --all)
+mka bacon -j30
