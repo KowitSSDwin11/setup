@@ -50,4 +50,4 @@ echo "Config git"
 git config --global user.email "rushi@gmail.com"
 git config --global user.name "rushi"
 echo "done"
-
+cd ~/
