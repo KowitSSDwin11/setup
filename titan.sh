@@ -10,6 +10,8 @@ unzip platform-tools-latest-linux.zip -d platform-tools
 sudo apt install git
 echo "Downloading configuration script"
 git clone https://github.com/akhilnarang/scripts
+echo "CD"
+cd scripts
 echo "Running configuration script"
 ./setup/android_build_env.sh
 echo "CD"
