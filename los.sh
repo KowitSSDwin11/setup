@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "Creating android/lineage"
 mkdir -p ~/android/lineage
 cd ~/android/lineage
