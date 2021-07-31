@@ -51,5 +51,6 @@ git config --global user.email "rushi@gmail.com"
 git config --global user.name "rushi"
 echo "done"
 cd ~/
+sudo apt-get update && sudo apt-get upgrade -y
 free -h
 df -h
