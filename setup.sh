@@ -4,7 +4,7 @@ cd ~/
 echo "Updating environment"
 sudo apt-get update && sudo apt-get upgrade -y
 echo "Installing the build packages"
-sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
+sudo apt-get install -y mc bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
 echo "Downloading platformtools"
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 echo "Unziping platformtools"
@@ -35,11 +35,11 @@ echo "fi" >> ~/.profile
 echo "Updating bashrc"
 echo "export USE_CCACHE=1" >> ~/.bashrc
 echo "export CCACHE_EXEC=/usr/bin/ccache" >> ~/.bashrc
-echo "ccache -M 50G" >> ~/.bashrc
+echo "ccache -M 10G" >> ~/.bashrc
 echo "export USE_NINJA=false" >> ~/.bashrc
 export USE_CCACHE=1
 export CCACHE_EXEC=/usr/bin/ccache
-ccache -M 50G
+ccache -M 10G
 export USE_NINJA=false
 echo "Updating environment"
 cd ~/
@@ -51,3 +51,5 @@ git config --global user.email "rushi@gmail.com"
 git config --global user.name "rushi"
 echo "done"
 cd ~/
+free -h
+df -h
