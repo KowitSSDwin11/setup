@@ -18,11 +18,12 @@ cd scripts
 cd ~/
 echo "Creating bin"
 mkdir -p ~/bin
-echo "Creating android"
-mkdir -p ~/android
 echo "setting up repo"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
+echo "Config git"
+git config --global user.email "rushi4tg@hottempmail.com"
+git config --global user.name "rushi"
 echo "Updating profile"
 echo "# add Android SDK platform tools to path" >> ~/.profile
 echo "if [ -d "$HOME/platform-tools" ] ; then" >> ~/.profile
@@ -32,25 +33,13 @@ echo "# set PATH so it includes user's private bin if it exists" >> ~/.profile
 echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
-echo "Updating bashrc"
-echo "export USE_CCACHE=1" >> ~/.bashrc
-echo "export CCACHE_EXEC=/usr/bin/ccache" >> ~/.bashrc
-echo "ccache -M 10G" >> ~/.bashrc
-echo "export USE_NINJA=false" >> ~/.bashrc
-export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
-ccache -M 10G
-export USE_NINJA=false
 echo "Updating environment"
-cd ~/
+sudo apt install -y python
 sudo apt-get update && sudo apt-get upgrade -y
 source ~/.bashrc
 source ~/.profile
-echo "Config git"
-git config --global user.email "rushi@gmail.com"
-git config --global user.name "rushi"
-echo "done"
-cd ~/
-sudo apt-get update && sudo apt-get upgrade -y
-free -h
+cat /etc/os*
 df -h
+free -h
+nproc
+echo "done"
