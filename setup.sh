@@ -24,6 +24,7 @@ chmod a+x ~/bin/repo
 echo "Config git"
 git config --global user.email "rushi4tg@hottempmail.com"
 git config --global user.name "rushi"
+git config --global color.ui true
 echo "Updating profile"
 echo "# add Android SDK platform tools to path" >> ~/.profile
 echo "if [ -d "$HOME/platform-tools" ] ; then" >> ~/.profile
