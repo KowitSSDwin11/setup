@@ -39,4 +39,4 @@ ccache -M 10G
 ccache -o compression=true
 ccache -z
 mka api-stubs-docs -j30 && mka hiddenapi-lists-docs -j30 && mka system-api-stubs-docs -j30 && mka test-api-stubs-docs -j30 && mka sepolicy -j30 && mka bootimage -j30
-mka bacon -j1
+mka bacon -j8 ; mka bacon -j1
