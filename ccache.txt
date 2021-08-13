@@ -11,6 +11,6 @@ unzip -q ccache.zip
 export CCACHE_DIR=/workspace/titan/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -o compression=true
+ccache -s
 ccache -z
 ccache -s
