@@ -27,7 +27,6 @@ VT=https://github.com/thedeadfish59/proprietary_vendor_motorola
 VTB=ten
 DEVICE=titan
 ROM=aosp
-
 https://transfer.sh/1Qs46OH/ccache.zip
 
 #RR
@@ -59,3 +58,36 @@ VT=https://github.com/RenanQueiroz/proprietary_vendor_motorola
 VTB=lineage-16.0
 DEVICE=titan
 ROM=havoc
+export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
+https://transfer.sh/19ivTS3/ccache.zip
+https://transfer.sh/1fPbCNO/ccache.zip
+
+#SOS
+WORK_DIR=sos
+ROM_LINK=https://github.com/SuperiorOS/manifest
+ROM_BRANCH=ten
+DT=https://github.com/thedeadfish59/android_device_motorola_titan
+DTB=ten
+KT=https://github.com/thedeadfish59/android_kernel_motorola_msm8226
+KTB=ten
+CT=https://github.com/thedeadfish59/android_device_motorola_msm8226-common
+CTB=ten
+VT=https://github.com/thedeadfish59/proprietary_vendor_motorola
+VTB=ten
+DEVICE=titan
+ROM=superior
+
+#nad
+WORK_DIR=nad
+ROM_LINK=https://github.com/NusantaraProject-ROM/android_manifest
+ROM_BRANCH=10
+DT=https://github.com/thedeadfish59/android_device_motorola_titan
+DTB=ten
+KT=https://github.com/thedeadfish59/android_kernel_motorola_msm8226
+KTB=ten
+CT=https://github.com/thedeadfish59/android_device_motorola_msm8226-common
+CTB=ten
+VT=https://github.com/thedeadfish59/proprietary_vendor_motorola
+VTB=ten
+DEVICE=titan
+ROM=nad
