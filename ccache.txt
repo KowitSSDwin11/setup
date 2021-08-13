@@ -1,13 +1,25 @@
+#new
+#after lunch
+export CCACHE_DIR=/workspace/titan/ccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+ccache -M 10G
+ccache -o compression=true
+ccache -z
+ccache -s
+
 #upload
 cd /workspace/titan
 zip -q -r ccache.zip ccache
 curl --upload-file ccache.zip https://transfer.sh/
 
-$download
+#download
 cd /workspace/titan
 wget link
 unzip -q ccache.zip
 
+#old
+#after lunch
 export CCACHE_DIR=/workspace/titan/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
