@@ -1,0 +1,16 @@
+#upload
+cd /workspace/titan
+zip -q -r ccache.zip ccache
+curl --upload-file ccache.zip https://transfer.sh/
+
+$download
+cd /workspace/titan
+wget link
+unzip -q ccache.zip
+
+export CCACHE_DIR=/workspace/titan/ccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+ccache -o compression=true
+ccache -z
+ccache -s
