@@ -12,9 +12,6 @@ VTB=
 DEVICE=
 ROM=
 
-wget https://transfer.sh/ccache.zip
-unzip -q ccache.zip
-
 mkdir ${WORK_DIR} && cd ${WORK_DIR}
 git config --global user.email "rushi4tg@hottempmail.com"
 git config --global user.name "rushi"
@@ -36,12 +33,7 @@ lunch ${ROM}_${DEVICE}-userdebug
 
 breakfast ${ROM}_${DEVICE}-userdebug
 
-export CCACHE_DIR=/workspace/titan/ccache
-export CCACHE_EXEC=$(which ccache)
-export USE_CCACHE=1
-ccache -M 10G
-ccache -o compression=true
-ccache -z
-ccache -s
-
 mka api-stubs-docs -j30 && mka hiddenapi-lists-docs -j30 && mka system-api-stubs-docs -j30 && mka test-api-stubs-docs -j30 && mka sepolicy -j30 && mka bootimage -j30 && mka SystemUI -j30 ; mka SystemUI -j1 ; mka bacon -j8 ; mka bacon -j1
+
+cd $OUT
+curl --upload-file *.zip https://transfer.sh/
