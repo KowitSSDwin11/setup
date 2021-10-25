@@ -2,12 +2,12 @@
 WORK_DIR=los
 ROM_LINK=https://github.com/LineageOS/android
 ROM_BRANCH=lineage-17.1
-DT=https://github.com/RenanQueiroz/android_device_motorola_titan
+DT=https://github.com/rushiranpise/android_device_motorola_titan
 DTB=lineage-17.1
-KT=https://github.com/RenanQueiroz/android_kernel_motorola_msm8226
+KT=https://github.com/rushiranpise/android_kernel_motorola_msm8226
 KTB=lineage-17.0
-CT=https://github.com/MotoDevelopment/android_device_motorola_msm8226-common
-CTB=lineage-17.1
+CT=https://github.com/rushiranpise/android_device_motorola_msm8226-common
+CTB=common
 VT=https://github.com/RenanQueiroz/proprietary_vendor_motorola
 VTB=lineage-16.0
 DEVICE=titan
@@ -17,17 +17,23 @@ ROM=lineage
 WORK_DIR=pe
 ROM_LINK=https://github.com/PixelExperience/manifest
 ROM_BRANCH=ten-plus
-DT=https://github.com/thedeadfish59/android_device_motorola_titan
-DTB=ten
-KT=https://github.com/thedeadfish59/android_kernel_motorola_msm8226
-KTB=ten
+DT=https://github.com/rushiranpise/android_device_motorola_titan
+DTB=pe
+KT=https://github.com/rushiranpise/android_kernel_motorola_msm8226
+KTB=lineage-17.0
 CT=https://github.com/thedeadfish59/android_device_motorola_msm8226-common
 CTB=ten
-VT=https://github.com/thedeadfish59/proprietary_vendor_motorola
-VTB=ten
+VT=https://github.com/RenanQueiroz/proprietary_vendor_motorola
+VTB=lineage-16.0
 DEVICE=titan
 ROM=aosp
 https://transfer.sh/1Qs46OH/ccache.zip
+
+for pe
+cd device/motorola/msm8226-common
+git cherry-pick 5de12b7fb23063c5596d74d4af769f88c3ce81b9
+git cherry-pick 87f064c878f8edb70399f407039978710acc14aa
+cd -
 
 #RR
 WORK_DIR=rr
