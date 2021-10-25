@@ -1,3 +1,37 @@
+mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushi4tg@hottempmail.com"
+git config --global user.name "rushi"
+git config --global color.ui true
+export JAVA_TOOL_OPTIONS=-Xmx25g
+repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
+git clone --depth 1 ${DT} -b ${DTB} device/motorola/titan
+git clone --depth 1 ${KT} -b ${KTB} kernel/motorola/msm8226
+git clone --depth 1 ${CT} -b ${CTB} device/motorola/msm8226-common
+git clone --depth 1 ${VT} -b ${VTB} vendor/motorola
+git clone --depth 1 https://github.com/LineageOS/android_system_qcom -b lineage-17.1 system/qcom
+git clone --depth 1 https://github.com/LineageOS/android_packages_resources_devicesettings  -b lineage-17.1 packages/resources/devicesettings
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+source build/envsetup.sh
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lunch ${ROM}_${DEVICE}-userdebug
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mka api-stubs-docs -j30 && mka hiddenapi-lists-docs -j30 && mka system-api-stubs-docs -j30 && mka test-api-stubs-docs -j30 && mka sepolicy -j30 && mka bootimage -j30
+
+mka SystemUI -j30 || mka SystemUI -j1
+
+mka bacon -j8 || mka bacon -j1
+
+cd $OUT
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+curl --upload-file <zip name> https://transfer.sh/
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#if needed
+
+breakfast ${ROM}_${DEVICE}-userdebug
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#template
+
 WORK_DIR=
 ROM_LINK=
 ROM_BRANCH=
@@ -12,28 +46,3 @@ VTB=
 DEVICE=
 ROM=
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-mkdir ${WORK_DIR} && cd ${WORK_DIR}
-git config --global user.email "rushi4tg@hottempmail.com"
-git config --global user.name "rushi"
-git config --global color.ui true
-export JAVA_TOOL_OPTIONS=-Xmx25g
-repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
-git clone --depth 1 ${DT} -b ${DTB} device/motorola/titan
-git clone --depth 1 ${KT} -b ${KTB} kernel/motorola/msm8226
-git clone --depth 1 ${CT} -b ${CTB} device/motorola/msm8226-common
-git clone --depth 1 ${VT} -b ${VTB} vendor/motorola
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-git clone --depth 1 https://github.com/LineageOS/android_system_qcom -b lineage-17.1 system/qcom
-git clone --depth 1 https://github.com/LineageOS/android_packages_resources_devicesettings  -b lineage-17.1 packages/resources/devicesettings
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-source build/envsetup.sh
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-lunch ${ROM}_${DEVICE}-userdebug
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-breakfast ${ROM}_${DEVICE}-userdebug
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-mka api-stubs-docs -j30 && mka hiddenapi-lists-docs -j30 && mka system-api-stubs-docs -j30 && mka test-api-stubs-docs -j30 && mka sepolicy -j30 && mka bootimage -j30 && mka SystemUI -j30 ; mka SystemUI -j1 ; mka bacon -j8 ; mka bacon -j1
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-cd $OUT
-curl --upload-file *.zip https://transfer.sh/
