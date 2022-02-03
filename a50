@@ -1,12 +1,14 @@
 WORK_DIR=
 ROM_LINK=
 ROM_BRANCH=
+ROM=
+DEVICE=a505f
 mkdir ${WORK_DIR} && cd ${WORK_DIR}
 git config --global user.email "rushi4tg@hottempmail.com"
 git config --global user.name "rushi"
 git config --global color.ui true
 repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync  -j300
 
 git clone --depth 1 https://github.com/Galaxya50/android_device_samsung_a505f -b android-12.0 device/samsung/a505f
 git clone --depth 1 https://github.com/Galaxya50/android_device_samsung_a505fn -b android-12.0 device/samsung/a505fn
