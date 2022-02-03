@@ -39,5 +39,5 @@ cat /etc/os*
 df -h
 free -h
 nproc
-export JAVA_TOOL_OPTIONS=-Xmx25g
+
 echo "done"
