@@ -1,0 +1,38 @@
+WORK_DIR=
+ROM_LINK=
+ROM_BRANCH=
+mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushi4tg@hottempmail.com"
+git config --global user.name "rushi"
+git config --global color.ui true
+repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync
+
+git clone --depth 1 https://github.com/Galaxya50/android_device_samsung_a505f -b android-12.0 device/samsung/a505f
+git clone --depth 1 https://github.com/Galaxya50/android_device_samsung_a505fn -b android-12.0 device/samsung/a505fn
+git clone --depth 1 https://github.com/Galaxya50/android_device_samsung_a50-common -b android-12.0 device/samsung/a50-common
+git clone --depth 1 https://github.com/Galaxya50/android_kernel_samsung_a50-common -b android-12.0 kernel/samsung/a50-common
+git clone --depth 1 https://github.com/Galaxya50/android_vendor_samsung_a505f -b android-12.0 vendor/samsung/a505f
+git clone --depth 1 https://github.com/Galaxya50/android_vendor_samsung_a505fn -b android-12.0 vendor/samsung/a505fn
+git clone --depth 1 https://github.com/Galaxya50/android_vendor_samsung_a50-common -b android-12.0 vendor/samsung/a50-common
+
+git clone --depth 1 https://github.com/LineageOS/android_device_samsung_slsi_sepolicy -b lineage-19.0 device/samsung_slsi/sepolicy
+git clone --depth 1 https://github.com/LineageOS/android_hardware_samsung -b lineage-19.0 hardware/samsung
+git clone --depth 1 https://github.com/LineageOS/android_hardware_samsung_nfc -b lineage-18.1 hardware/samsung/nfc
+git clone --depth 1 https://github.com/LineageOS/android_hardware_samsung_slsi_libbt -b lineage-19.0 hardware/samsung_slsi/libbt
+git clone --depth 1 https://github.com/LineageOS/android_hardware_samsung_slsi_scsc_wifibt_wifi_hal -b lineage-19.0 hardware/samsung_slsi/scsc_wifibt/wifi_hal
+git clone --depth 1 https://github.com/LineageOS/android_hardware_samsung_slsi_scsc_wifibt_wpa_supplicant_lib -b lineage-19.0 hardware/samsung_slsi/scsc_wifibt/wpa_supplicant_lib
+
+source build/envsetup.sh
+
+lunch ${ROM}_${DEVICE}-userdebug | breakfast ${ROM}_${DEVICE}-userdebug
+
+mka api-stubs-docs -j30 && mka hiddenapi-lists-docs -j30 && mka system-api-stubs-docs -j30 && mka test-api-stubs-docs -j30 && mka sepolicy -j30 && mka bootimage -j30
+
+mka SystemUI -j30 || mka SystemUI -j1
+
+mka bacon -j8 || mka bacon -j1
+
+cd $OUT
+
+curl --upload-file <zip name> https://transfer.sh/
