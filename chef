@@ -1,0 +1,44 @@
+
+WORK_DIR=pea12
+ROM_LINK=https://github.com/PixelExperience/manifest
+ROM_BRANCH=twelve
+DT=https://github.com/rushiranpise/device_motorola_chef
+DTB=twelve
+KT=https://github.com/rushiranpise/kernel_motorola_msm8998
+KTB=twelve
+CT=https://github.com/PixelExperience-Devices/device_motorola_sdm660-common
+CTB=twelve
+VT=https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_chef
+VTB=eleven
+DEVICE=chef
+ROM=aosp
+
+mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushi4tg@hottempmail.com"
+git config --global user.name "rushi"
+git config --global color.ui true
+repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
+git clone --depth 1 ${DT} -b ${DTB} device/motorola/chef
+git clone --depth 1 ${KT} -b ${KTB} kernel/motorola/msm8998
+git clone --depth 1 ${CT} -b ${CTB} device/motorola/sdm660-common
+git clone --depth 1 ${VT} -b ${VTB} vendor/motorola/chef
+git clone --depth 1 https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_sdm660-common -b twelve vendor/motorola/sdm660-common
+git clone --depth 1 https://github.com/PixelExperience/hardware_motorola -b twelve hardware/motorola
+
+source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug && mka otapackage -j30
+
+cd $OUT && ls
+
+curl -T *.zip https://oshi.at
+
+sudo rm -rf device/motorola/chef
+sudo rm -rf kernel/motorola/msm8998
+sudo rm -rf device/motorola/sdm660-common
+sudo rm -rf vendor/motorola/chef
+sudo rm -rf vendor/motorola/sdm660-common
+sudo rm -rf hardware/motorola
+
+make clean
+mka clean
+sudo rm -rf out
