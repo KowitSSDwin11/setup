@@ -4,7 +4,7 @@ ROM_LINK=https://github.com/PixelExperience/manifest
 ROM_BRANCH=twelve
 DT=https://github.com/rushiranpise/device_motorola_chef
 DTB=twelve
-KT=https://github.com/rushiranpise/kernel_motorola_msm8998
+KT=https://github.com/PixelExperience-Devices/kernel_motorola_msm8998
 KTB=twelve
 CT=https://github.com/PixelExperience-Devices/device_motorola_sdm660-common
 CTB=twelve
@@ -25,10 +25,15 @@ git clone --depth 1 ${CT} -b ${CTB} device/motorola/sdm660-common
 git clone --depth 1 ${VT} -b ${VTB} vendor/motorola/chef
 git clone --depth 1 https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_sdm660-common -b twelve vendor/motorola/sdm660-common
 git clone --depth 1 https://github.com/PixelExperience/hardware_motorola -b twelve hardware/motorola
+cd kernel/motorola/msm8998 && git fetch https://github.com/rushiranpise/kernel_motorola_msm8998 && git cherry-pick 0372226f8c90933dfa04526c0fff5fc9a93eef53 && cd -
+ls
 
 source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug && mka otapackage -j30
 
 cd $OUT && ls
+
+mv aosp_chef-ota-retrofit-eng.rushi24.zip aosp_chef-ota-retrofit-eng.rushi24_$(date +%F).zip
+~/gdrive upload aosp_chef-ota-retrofit-eng.rushi24_$(date +%F).zip
 
 curl -T *.zip https://oshi.at
 
@@ -42,3 +47,9 @@ sudo rm -rf hardware/motorola
 make clean
 mka clean
 sudo rm -rf out
+
+
+#gdrive
+wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
+tar -xvf gdrive_2.1.1_linux_386.tar.gz
+~/gdrive about
