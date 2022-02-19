@@ -33,7 +33,7 @@ source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug && mka otapackage -
 cd $OUT && ls
 
 mv aosp_chef-ota-retrofit-eng.rushi24.zip aosp_chef-ota-retrofit-eng.rushi24_$(date +%F).zip
-~/gdrive upload aosp_chef-ota-retrofit-eng.rushi24_$(date +%F).zip
+~/gdrive upload -p 1SfqRW20kiZb2YAY2UyIOUB7l3Fe0Aur_ aosp_chef-ota-retrofit-eng.rushi24_$(date +%F).zip
 
 curl -T *.zip https://oshi.at
 
