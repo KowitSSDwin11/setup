@@ -8,8 +8,8 @@ KT=https://github.com/PixelExperience-Devices/kernel_motorola_msm8998
 KTB=twelve
 CT=https://github.com/PixelExperience-Devices/device_motorola_sdm660-common
 CTB=twelve
-VT=https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_chef
-VTB=eleven
+VT=https://github.com/rushiranpise/vendor_motorola_chef
+VTB=test7
 DEVICE=chef
 ROM=aosp
 
