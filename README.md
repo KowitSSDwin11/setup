@@ -4,4 +4,4 @@ cd ~/
 
 git clone https://github.com/rushiranpise/titan
 
-sudo bash titan/gitpod.sh
+sudo bash titan/setup.sh
