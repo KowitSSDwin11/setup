@@ -41,3 +41,6 @@ free -h
 nproc
 
 echo "done"
+
+sudo snap install notepad-plus-plus
+
