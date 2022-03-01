@@ -54,8 +54,15 @@ wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_l
 tar -xvf gdrive_2.1.1_linux_386.tar.gz
 ~/gdrive about
 
-#pe remove
-CalculatorGooglePrebuilt
-CalendarGooglePrebuilt
-GoogleCamera
-Photos
+cd kernel/motorola/msm8998 && git fetch https://github.com/rushiranpise/kernel_motorola_msm8998 && git cherry-pick 0372226f8c90933dfa04526c0fff5fc9a93eef53 && cd -
+cd hardware/motorola && git fetch https://github.com/PixelPlusUI-SnowCone/hardware_motorola && git cherry-pick 89582276018a65fbe5d21eb5ce4da63d850cef4f && cd -
+cd device/motorola/chef && git fetch https://github.com/rushiranpise/device_motorola_chef && git cherry-pick ec9519ae7de7a68a18f9285424d7721469f7813b && cd -
+#crdroid #cherish #hotspotbug
+
+#crdroid ccache error 
+export CCACHE_DIR=/home/rushi24/crdroidccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+ccache -M 10G
+ccache -o compression=true
+cd hardware/qcom-caf/wlan && git fetch https://github.com/Gabuter-OS/hardware_qcom-caf_wlan && git cherry-pick c0300c824da0a4cfccc6f94553a74cfb85f25e9f && cd -
