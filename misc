@@ -1,0 +1,56 @@
+git -c http.sslVerify=false clone --depth 1 https://dumps.tadiphone.dev/dumps/motorola/chef_sprout -b user-10-QPTS30.61-18-16-16-c8402-release-keys chef
+
+git clone --depth 1 https://github.com/rushiranpise/device_motorola_chef -b twelve device/motorola/chef
+
+git clone --depth 1 https://github.com/PixelExperience-Devices/device_motorola_sdm660-common -b twelve device/motorola/sdm660-common
+
+git clone --depth 1 https://github.com/rushiranpise/vendor_motorola_chef -b test5 test5
+
+git clone --depth 1 https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_sdm660-common -b twelve vendor/motorola/sdm660-common
+
+git clone --depth 1 https://github.com/LineageOS/android_tools_extract-utils -b lineage-19.0  tools/extract-utils
+
+git clone https://github.com/ShivamKumarJha/android_tools blobs
+
+git clone --depth 1 https://github.com/rushiranpise/chef_sprout chef_sprout
+
+
+mv chef chef_pe11
+
+git clone --depth 1 https://github.com/rushiranpise/device_motorola_chef -b twelve device/motorola/chef_pe12
+
+mv chef_pe chef
+
+
+git diff HEAD filename
+
+git add . && git commit -m "update blobs"
+grep -rl 'chef_sprout' | xargs sed -i 's/chef_sprout/chef/g'
+
+
+git -c http.sslVerify=false clone --depth 1 https://dumps.tadiphone.dev/dumps/motorola/chef_sprout -b user-10-QPTS30.61-18-16-16-c8402-release-keys chef
+git clone https://github.com/ShivamKumarJha/android_tools blobs
+cd blobs
+sudo apt-get install python3-dev -y
+chmod +x setup.sh
+sudo bash setup.sh
+mkdir working
+cp /workspace/titan/device/motorola/chef/proprietary-files.txt working/
+./tools/vendor_tree.sh /workspace/titan/chef
+cd vendor/motorola/chef_sprout
+ls -a
+sudo rm -rf .git
+
+~/.gitconfig
+
+cp -r /workspace/titan/blobs/vendor/motorola/chef_sprout/proprietary/vendor/lib/soundfx/libswdap_ds1se.so /workspace/titan/test3/test4/proprietary/vendor/lib/soundfx/
+cp -r /workspace/titan/blobs/vendor/motorola/chef_sprout/proprietary/vendor/lib64/soundfx/libswdap_ds1se.so /workspace/titan/test3/test4/proprietary/vendor/lib64/soundfx/
+
+cp -r /workspace/titan/test3/test4/. /workspace/titan/test3/test5
+
+cp -r /workspace/titan/vendor/motorola/chef/. /workspace/titan/chef2
+
+
+git fetch https://github.com/rushiranpise/vendor_motorola_chef && git cherry-pick c4957ec213f5821d73a4029353e01dd9b5ea462d
+
+xclip -selection clipboard -i < 
