@@ -18,8 +18,8 @@ echo "setting up repo"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 echo "Config git"
-git config --global user.email "rushi4tg@hottempmail.com"
-git config --global user.name "rushi"
+git config --global user.email "rushiranpise17@gmail.com"
+git config --global user.name "Rushi Ranpise"
 git config --global color.ui true
 echo "Updating profile"
 echo "# add Android SDK platform tools to path" >> ~/.profile
