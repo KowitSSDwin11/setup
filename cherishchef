@@ -6,14 +6,15 @@ DT=https://github.com/rushiranpise/device_motorola_chef
 DTB=twelve
 KT=https://github.com/PixelExperience-Devices/kernel_motorola_msm8998
 KTB=twelve
-CT=https://github.com/rushiranpise/device_motorola_sdm660-common
-CTB=patch-2
+CT=https://github.com/PixelExperience-Devices/device_motorola_sdm660-common
+CTB=twelve
 VT=https://github.com/rushiranpise/vendor_motorola_chef
 VTB=test7
 DEVICE=chef
 ROM=cherish
-git config --global user.email "rushi4tg@hottempmail.com"
-git config --global user.name "rushi"
+# mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushiranpise17@gmail.com"
+git config --global user.name "Rushi Ranpise"
 git config --global color.ui true
 sudo rm -rf device/motorola/chef
 sudo rm -rf kernel/motorola/msm8998
@@ -33,6 +34,7 @@ cd hardware/qcom-caf/wlan && git fetch https://github.com/Gabuter-OS/hardware_qc
 cd hardware/motorola && git fetch https://github.com/PixelPlusUI-SnowCone/hardware_motorola && git cherry-pick 89582276018a65fbe5d21eb5ce4da63d850cef4f && cd -
 cd device/motorola/chef && git fetch https://github.com/rushiranpise/device_motorola_chef cherish && git cherry-pick 8e88cdc63d9cf274c76809f1060c3822772f4d87 && cd -
 cd kernel/configs && git fetch https://github.com/jro1979oliver/android_kernel_configs && git cherry-pick 6c3f51460d3d9bddccbb44fa50eb2cdceede1b56 && cd -
+cd device/motorola/sdm660-common && git fetch https://github.com/rushiranpise/device_motorola_sdm660-common patch-2 && git cherry-pick 8757d03373d37063d64e52e1134c9839b21bc4bd && cd -
 source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug && mka otapackage -j30
 
 
