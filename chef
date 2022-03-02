@@ -12,11 +12,16 @@ VT=https://github.com/rushiranpise/vendor_motorola_chef
 VTB=test7
 DEVICE=chef
 ROM=aosp
-
-mkdir ${WORK_DIR} && cd ${WORK_DIR}
-git config --global user.email "rushi4tg@hottempmail.com"
-git config --global user.name "rushi"
+# mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushiranpise17@gmail.com"
+git config --global user.name "Rushi Ranpise"
 git config --global color.ui true
+sudo rm -rf device/motorola/chef
+sudo rm -rf kernel/motorola/msm8998
+sudo rm -rf device/motorola/sdm660-common
+sudo rm -rf vendor/motorola/chef
+sudo rm -rf vendor/motorola/sdm660-common
+sudo rm -rf hardware/motorola
 repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
 git clone --depth 1 ${DT} -b ${DTB} device/motorola/chef
@@ -25,7 +30,8 @@ git clone --depth 1 ${CT} -b ${CTB} device/motorola/sdm660-common
 git clone --depth 1 ${VT} -b ${VTB} vendor/motorola/chef
 git clone --depth 1 https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_sdm660-common -b twelve vendor/motorola/sdm660-common
 git clone --depth 1 https://github.com/PixelExperience/hardware_motorola -b twelve hardware/motorola
-cd kernel/motorola/msm8998 && git fetch https://github.com/rushiranpise/kernel_motorola_msm8998 && git cherry-pick 0372226f8c90933dfa04526c0fff5fc9a93eef53 && cd -
+cd kernel/configs && git fetch https://github.com/jro1979oliver/android_kernel_configs && git cherry-pick 6c3f51460d3d9bddccbb44fa50eb2cdceede1b56 && cd -
+cd device/motorola/sdm660-common && git fetch https://github.com/rushiranpise/device_motorola_sdm660-common patch-2 && git cherry-pick 8757d03373d37063d64e52e1134c9839b21bc4bd && cd -
 ls
 
 source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug && mka otapackage -j30
