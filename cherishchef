@@ -1,0 +1,38 @@
+
+
+ROM_LINK=https://github.com/CherishOS/android_manifest
+ROM_BRANCH=twelve
+DT=https://github.com/rushiranpise/device_motorola_chef
+DTB=twelve
+KT=https://github.com/PixelExperience-Devices/kernel_motorola_msm8998
+KTB=twelve
+CT=https://github.com/rushiranpise/device_motorola_sdm660-common
+CTB=patch-2
+VT=https://github.com/rushiranpise/vendor_motorola_chef
+VTB=test7
+DEVICE=chef
+ROM=cherish
+git config --global user.email "rushi4tg@hottempmail.com"
+git config --global user.name "rushi"
+git config --global color.ui true
+sudo rm -rf device/motorola/chef
+sudo rm -rf kernel/motorola/msm8998
+sudo rm -rf device/motorola/sdm660-common
+sudo rm -rf vendor/motorola/chef
+sudo rm -rf vendor/motorola/sdm660-common
+sudo rm -rf hardware/motorola
+repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
+git clone --depth 1 ${DT} -b ${DTB} device/motorola/chef
+git clone --depth 1 ${KT} -b ${KTB} kernel/motorola/msm8998
+git clone --depth 1 ${CT} -b ${CTB} device/motorola/sdm660-common
+git clone --depth 1 ${VT} -b ${VTB} vendor/motorola/chef
+git clone --depth 1 https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_sdm660-common -b twelve vendor/motorola/sdm660-common
+git clone --depth 1 https://github.com/PixelExperience/hardware_motorola -b twelve hardware/motorola
+cd hardware/qcom-caf/wlan && git fetch https://github.com/Gabuter-OS/hardware_qcom-caf_wlan && git cherry-pick c0300c824da0a4cfccc6f94553a74cfb85f25e9f && cd -
+cd hardware/motorola && git fetch https://github.com/PixelPlusUI-SnowCone/hardware_motorola && git cherry-pick 89582276018a65fbe5d21eb5ce4da63d850cef4f && cd -
+cd device/motorola/chef && git fetch https://github.com/rushiranpise/device_motorola_chef cherish && git cherry-pick 8e88cdc63d9cf274c76809f1060c3822772f4d87 && cd -
+cd kernel/configs && git fetch https://github.com/jro1979oliver/android_kernel_configs && git cherry-pick 6c3f51460d3d9bddccbb44fa50eb2cdceede1b56 && cd -
+source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug && mka otapackage -j30
+
+
