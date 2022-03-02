@@ -4,12 +4,21 @@ DT=https://github.com/rushiranpise/device_motorola_chef
 DTB=twelve
 KT=https://github.com/PixelExperience-Devices/kernel_motorola_msm8998
 KTB=twelve
-CT=https://github.com/rushiranpise/device_motorola_sdm660-common
-CTB=patch-2
+CT=https://github.com/PixelExperience-Devices/device_motorola_sdm660-common
+CTB=twelve
 VT=https://github.com/rushiranpise/vendor_motorola_chef
 VTB=test7
 DEVICE=chef
 ROM=lineage
+# mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushiranpise17@gmail.com"
+git config --global user.name "Rushi Ranpise"
+sudo rm -rf device/motorola/chef
+sudo rm -rf kernel/motorola/msm8998
+sudo rm -rf device/motorola/sdm660-common
+sudo rm -rf vendor/motorola/chef
+sudo rm -rf vendor/motorola/sdm660-common
+sudo rm -rf hardware/motorola
 repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
 git clone --depth 1 ${DT} -b ${DTB} device/motorola/chef
@@ -23,7 +32,7 @@ cd hardware/motorola && git fetch https://github.com/PixelPlusUI-SnowCone/hardwa
 cd device/motorola/chef && git fetch https://github.com/rushiranpise/device_motorola_chef crdroid && git cherry-pick ec9519ae7de7a68a18f9285424d7721469f7813b && cd -
 cd kernel/configs && git fetch https://github.com/jro1979oliver/android_kernel_configs && git cherry-pick 6c3f51460d3d9bddccbb44fa50eb2cdceede1b56 && cd -
 git clone https://gitlab.com/crdroidandroid/android_vendor_gapps vendor/gapps
-
+cd device/motorola/sdm660-common && git fetch https://github.com/rushiranpise/device_motorola_sdm660-common patch-2 && git cherry-pick 8757d03373d37063d64e52e1134c9839b21bc4bd && cd -
 source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug
 
 export CCACHE_DIR=/home/rushi24/crdroidccache
