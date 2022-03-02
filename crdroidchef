@@ -13,6 +13,7 @@ ROM=lineage
 # mkdir ${WORK_DIR} && cd ${WORK_DIR}
 git config --global user.email "rushiranpise17@gmail.com"
 git config --global user.name "Rushi Ranpise"
+git config --global color.ui true
 sudo rm -rf device/motorola/chef
 sudo rm -rf kernel/motorola/msm8998
 sudo rm -rf device/motorola/sdm660-common
