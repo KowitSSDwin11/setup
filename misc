@@ -54,3 +54,14 @@ cp -r /workspace/titan/vendor/motorola/chef/. /workspace/titan/chef2
 git fetch https://github.com/rushiranpise/vendor_motorola_chef && git cherry-pick c4957ec213f5821d73a4029353e01dd9b5ea462d
 
 xclip -selection clipboard -i < 
+
+
+git fetch https://github.com/PixelExperience-Devices/device_motorola_lake && git cherry-pick -n  e3937ecf24eed8eb57e148b11cbef291f82863b7
+git status
+git restore --staged BoardConfig.mk
+git status
+git restore  BoardConfig.mk
+git status
+git add sepolicy/vendor/hal_audio_default.te
+git add sepolicy/vendor/system_server.te
+git commit --author="Jleeblanch <johnsonnolen@gmail.com>"
