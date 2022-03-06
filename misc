@@ -65,3 +65,43 @@ git status
 git add sepolicy/vendor/hal_audio_default.te
 git add sepolicy/vendor/system_server.te
 git commit --author="Jleeblanch <johnsonnolen@gmail.com>"
+
+
+git fetch https://github.com/PixelExperience-Devices/device_motorola_beckham && git cherry-pick -n  f54cc9556cd16fc9436765ff810e64b32a20955a
+
+
+git status
+git restore --staged BoardConfig.mk
+git status
+git restore  BoardConfig.mk
+git status
+git add sepolicy/vendor/hal_audio_default.te
+git add sepolicy/vendor/system_server.te
+git commit --author="Jleeblanch <johnsonnolen@gmail.com>"
+
+https://github.com/PixelExperience-Devices/device_motorola_beckham/commit/f54cc9556cd16fc9436765ff810e64b32a20955a
+
+
+git fetch https://github.com/rushiranpise/device_motorola_chef && git cherry-pick -n  493f9037117d3910c3f4521d5db053238ac8edb2
+
+git fetch https://github.com/rushiranpise/device_motorola_chef && git cherry-pick -n  f55c3dcbf4c2a22593e9c004d2294855c265df7c
+
+git fetch https://github.com/PixelExperience-Devices/device_motorola_beckham && git cherry-pick -n  1d1558afc78a5fcc9b2dd8af1194a08ba7b560f8
+
+git add .
+
+git commit --author="aleasto  <jorgelucas.sd@gmail.com>"
+
+git commit --author="Jorg3Lucas  <jorgelucas.sd@gmail.com>"
+
+git commit --author="jro1979oliver <jroliveira.oliveira301@gmail.com>"
+
+git commit --author="jhenrique09 <jhenrique09.mcz@hotmail.com>"
+
+
+git commit --author="GiaSen <giammasena@gmail.com>"
+
+ git commit --author="Deivid21 <david.parra.ignacio@gmail.com>"
+
+ git commit --author="erfanoabdi <erfangplus@gmail.com>"
+  git commit --author="AdrianDC <radian.dc@gmail.com>"
