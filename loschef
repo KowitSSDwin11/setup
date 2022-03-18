@@ -1,0 +1,27 @@
+ROM_LINK=https://github.com/LineageOS/android
+ROM_BRANCH=lineage-19.1
+DT=https://github.com/LineageOS/android_device_motorola_chef
+DTB=lineage-19.1
+KT=https://github.com/LineageOS/android_kernel_motorola_msm8998
+KTB=lineage-19.1
+CT=https://github.com/LineageOS/android_device_motorola_sdm660-common
+CTB=lineage-19.1
+VT=https://github.com/TheMuppets/proprietary_vendor_motorola
+VTB=lineage-19.1
+DEVICE=chef
+ROM=lineage
+mkdir ${WORK_DIR} && cd ${WORK_DIR}
+git config --global user.email "rushiranpise17@gmail.com"
+git config --global user.name "Rushi Ranpise"
+git config --global color.ui true
+repo init -q --no-repo-verify --depth=1 -u ${ROM_LINK} -b ${ROM_BRANCH}
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j300
+git clone --depth 1 ${DT} -b ${DTB} device/motorola/chef
+git clone --depth 1 ${KT} -b ${KTB} kernel/motorola/msm8998
+git clone --depth 1 ${CT} -b ${CTB} device/motorola/sdm660-common
+git clone --depth 1 ${VT} -b ${VTB} vendor/motorola
+git clone --depth 1 hhttps://github.com/LineageOS/android_hardware_motorola -b twelve hardware/motorola
+
+source build/envsetup.sh && lunch ${ROM}_${DEVICE}-userdebug 
+
+mka bacon -j30
