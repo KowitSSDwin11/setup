@@ -10,6 +10,7 @@ VT=https://github.com/TheMuppets/proprietary_vendor_motorola
 VTB=lineage-19.1
 DEVICE=chef
 ROM=lineage
+WORK_DIR=los
 mkdir ${WORK_DIR} && cd ${WORK_DIR}
 git config --global user.email "rushiranpise17@gmail.com"
 git config --global user.name "Rushi Ranpise"
