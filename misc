@@ -113,3 +113,8 @@ sudo rm -rf vendor/motorola/sdm660-common
 git clone https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_motorola_sdm660-common -b twelve vendor/motorola/sdm660-common
 cd device/motorola/sdm660-common && git fetch https://github.com/rushiranpise/device_motorola_sdm660-common patch-2 && git cherry-pick 953ce031424d5e363e6a32bce1143b69008e342d && cd -
 cd vendor/motorola/sdm660-common && git revert --no-edit 3b31196fb12df28e5d5c2ac3875251b4e3cf4c3e && cd -
+
+
+
+curl -sL $OUTFILE https://git.io/file-transfer | sh
+./transfer wet *.img
