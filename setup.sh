@@ -31,7 +31,7 @@ echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
 echo "Updating environment"
-sudo apt install -y python
+sudo apt install -y python nautilus
 sudo apt-get update && sudo apt-get upgrade -y
 source ~/.bashrc
 source ~/.profile
@@ -43,4 +43,6 @@ nproc
 echo "done"
 
 sudo snap install notepad-plus-plus
-
+git config --global user.email "rushiranpise17@gmail.com"
+git config --global user.name "Rushi Ranpise"
+git config --global color.ui true
