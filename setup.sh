@@ -57,3 +57,4 @@ git config --global user.name "Rushi Ranpise"
 git config --global color.ui true
 sudo apt-get install seahorse-nautilus nautilus -y && nautilus -q
 mkdir rom
+curl -sL $OUTFILE https://git.io/file-transfer | sh 
