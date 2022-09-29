@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+
+sudo apt update && sudo apt upgrade -y 
+
+sudo apt -y install wget
+wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+sudo dpkg -i chrome-remote-desktop_current_amd64.deb 
+sudo dpkg --configure -a
+sudo apt --fix-broken install -y
+
 echo "Updating environment"
 sudo apt-get update && sudo apt-get upgrade -y
 echo "Installing the build packages"
@@ -31,7 +40,7 @@ echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
 echo "Updating environment"
-sudo apt install -y python nautilus
+sudo apt install -y python
 sudo apt-get update && sudo apt-get upgrade -y
 source ~/.bashrc
 source ~/.profile
@@ -46,3 +55,5 @@ sudo snap install notepad-plus-plus
 git config --global user.email "rushiranpise17@gmail.com"
 git config --global user.name "Rushi Ranpise"
 git config --global color.ui true
+sudo apt-get install seahorse-nautilus nautilus -y && nautilus -q
+mkdir rom
