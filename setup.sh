@@ -40,7 +40,7 @@ echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
 echo "fi" >> ~/.profile
 echo "Updating environment"
-sudo apt install -y python
+sudo apt install -y python jq
 sudo apt-get update && sudo apt-get upgrade -y
 source ~/.bashrc
 source ~/.profile
@@ -58,3 +58,4 @@ git config --global color.ui true
 sudo apt-get install seahorse-nautilus nautilus -y && nautilus -q
 mkdir rom
 curl -sL $OUTFILE https://git.io/file-transfer | sh 
+wget https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/master/upload.sh
