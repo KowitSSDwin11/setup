@@ -45,6 +45,13 @@ sudo apt-get update && sudo apt-get upgrade -y
 source ~/.bashrc
 source ~/.profile
 
+gsettings set org.gnome.desktop.interface color-scheme Adwaita-dark
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface color-scheme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'prefer-dark'
+
 cat /etc/os*
 df -h
 free -h
