@@ -2,7 +2,7 @@
 
 sudo apt update && sudo apt upgrade -y
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt -y install wget bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev libelf-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python jq seahorse-nautilus nautilus firefox openjdk-8-jdk libwxgtk3.0-dev libwxgtk3.0-gtk3-dev
+sudo apt -y install wget bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev libelf-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python jq seahorse-nautilus nautilus firefox screen tmate openjdk-8-jdk libwxgtk3.0-dev libwxgtk3.0-gtk3-dev
 
 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo dpkg -i chrome-remote-desktop_current_amd64.deb 
