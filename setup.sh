@@ -9,8 +9,6 @@ sudo dpkg -i chrome-remote-desktop_current_amd64.deb
 sudo dpkg --configure -a
 sudo apt --fix-broken install -y
 
-mkdir rom
-
 curl -sL $OUTFILE https://git.io/file-transfer | sh 
 wget https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/master/upload.sh
 
@@ -41,19 +39,13 @@ git config --global color.ui true
 
 sudo apt update && sudo apt upgrade -y
 sudo apt-get update && sudo apt-get upgrade -y
+sudo apt -y install jq seahorse-nautilus nautilus
+sudo apt --fix-broken install -y
+sudo apt update && sudo apt upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 
 source ~/.bashrc
 source ~/.profile
-
-gsettings set org.gnome.desktop.interface color-scheme Adwaita-dark
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-gsettings set org.gnome.desktop.interface color-scheme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface gtk-theme 'prefer-dark'
-gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
-gsettings set org.gnome.desktop.interface gtk-theme prefer-dark
-
 cat /etc/os*
 df -h
 free -h
