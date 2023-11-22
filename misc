@@ -118,3 +118,28 @@ cd vendor/motorola/sdm660-common && git revert --no-edit 3b31196fb12df28e5d5c2ac
 
 curl -sL $OUTFILE https://git.io/file-transfer | sh
 ./transfer wet *.img
+
+
+git clone --depth 1 https://github.com/LineageOS/android_tools_extract-utils -b lineage-21.0  tools/extract-utils
+git clone --depth=1 https://github.com/LineageOS/android_prebuilts_extract-tools -b lineage-21.0 prebuilts/extract-tools
+git clone --depth=1 https://github.com/crdroidandroid/android_device_motorola_chef -b 14.0 device/motorola/chef
+git clone --depth=1 https://github.com/crdroidandroid/android_device_motorola_msm8998-common -b 14.0 device/motorola/msm8998-common
+git clone --depth=1 https://github.com/rushiranpise/proprietary_vendor_motorola_chef -b lineage-21 vendor/motorola/chef
+git clone --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_motorola_msm8998-common/ -b lineage-21 vendor/motorola/msm8998-common
+
+git clone --depth=1 https://github.com/motochef/motorola_chef_sprout_dump -b user-10-QPTS30.61-18-16-19-da2f0-release-keys moto
+
+cd device/motorola/chef && rm -rf .git && cd -
+cd device/motorola/msm8998-common && rm -rf .git && cd -
+cd prebuilts/extract-tools && rm -rf .git && cd -
+cd tools/extract-utils && rm -rf .git && cd -
+cd vendor/motorola/chef && rm -rf .git && cd -
+cd vendor/motorola/msm8998-common && rm -rf .git && cd -
+cd moto && rm -rf .git && cd -
+
+git add .
+git commit -m "test"
+
+cd device/motorola/chef
+./extract-files.sh /workspaces/test/moto
+./extract-files.sh -k -s libstdc++
